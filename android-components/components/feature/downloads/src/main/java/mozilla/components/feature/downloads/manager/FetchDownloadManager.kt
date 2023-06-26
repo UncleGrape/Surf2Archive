@@ -68,7 +68,7 @@ class FetchDownloadManager<T : AbstractFetchDownloadService>(
      * @return the id reference of the scheduled download.
      */
     override fun download(download: DownloadState, cookie: String): String? {
-        if (!download.isScheme(listOf("http", "https", "data", "blob"))) {
+        if (!download.isScheme(listOf("http", "https", "data", "blob", "moz-extension"))) {
             return null
         }
         validatePermissionGranted(applicationContext)
@@ -90,6 +90,7 @@ class FetchDownloadManager<T : AbstractFetchDownloadService>(
 
         val intent = Intent(applicationContext, service.java)
         intent.putExtra(EXTRA_DOWNLOAD_ID, download.id)
+        intent.action = AbstractFetchDownloadService.ACTION_TRY_AGAIN
         applicationContext.startService(intent)
 
         registerBroadcastReceiver()

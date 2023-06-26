@@ -21,9 +21,11 @@ activation:
 
 first-session:
   description: |
-    This ping is intended to capture the source of the app install
-    on the first session.
+    **THIS IS NOT A GENERIC FIRST USE PING** This ping is intended to capture
+    Adjust attribution. Use of this ping for other analyses will result in
+    undesirable outcomes.
   include_client_id: true
+  send_if_empty: true
   bugs:
     - https://github.com/mozilla-mobile/fenix/issues/7295
   data_reviews:
@@ -62,24 +64,6 @@ spoc:
     - https://github.com/mozilla-mobile/fenix/pull/27550#issuecomment-1295027631
   notification_emails:
     - android-probes@mozilla.com
-
-client-deduplication:
-  description: |
-    Contains data to help identify if client IDs are being regenerated
-    erroneously.
-  include_client_id: true
-  reasons:
-    active: |
-      The ping is being sent when the app is coming to the foreground.
-    inactive: |
-      The ping is being sent when the app is going to the background.
-  bugs:
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=1817029
-  data_reviews:
-    - https://bugzilla.mozilla.org/show_bug.cgi?id=1813195#c11
-  notification_emails:
-    - android-probes@mozilla.com
-    - fbertsch@mozilla.com
 
 cookie-banner-report-site:
   description: |

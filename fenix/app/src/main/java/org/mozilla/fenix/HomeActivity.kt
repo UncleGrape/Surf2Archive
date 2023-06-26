@@ -55,14 +55,13 @@ import mozilla.components.browser.state.state.SessionState
 import mozilla.components.browser.state.state.WebExtensionState
 import mozilla.components.concept.engine.EngineSession
 import mozilla.components.concept.engine.EngineView
-import mozilla.components.concept.storage.BookmarkNode
-import mozilla.components.concept.storage.BookmarkNodeType
 import mozilla.components.concept.storage.HistoryMetadataKey
 import mozilla.components.feature.contextmenu.DefaultSelectionActionDelegate
 import mozilla.components.feature.media.ext.findActiveMediaTab
 import mozilla.components.feature.privatemode.notification.PrivateNotificationFeature
 import mozilla.components.feature.search.BrowserStoreSearchAdapter
 import mozilla.components.service.fxa.sync.SyncReason
+import mozilla.components.support.base.ext.areNotificationsEnabledSafe
 import mozilla.components.support.base.feature.ActivityResultHandler
 import mozilla.components.support.base.feature.UserInteractionHandler
 import mozilla.components.support.base.log.logger.Logger
@@ -74,11 +73,13 @@ import mozilla.components.support.ktx.kotlin.isUrl
 import mozilla.components.support.ktx.kotlin.toNormalizedUrl
 import mozilla.components.support.locale.LocaleAwareAppCompatActivity
 import mozilla.components.support.utils.BootUtils
+import mozilla.components.support.utils.BrowsersCache
 import mozilla.components.support.utils.ManufacturerCodes
 import mozilla.components.support.utils.SafeIntent
 import mozilla.components.support.utils.toSafeIntent
 import mozilla.components.support.webextensions.WebExtensionPopupFeature
 import mozilla.telemetry.glean.private.NoExtras
+import org.mozilla.experiments.nimbus.initializeTooling
 import org.mozilla.fenix.GleanMetrics.Events
 import org.mozilla.fenix.GleanMetrics.Metrics
 import org.mozilla.fenix.GleanMetrics.StartOnHome
@@ -89,11 +90,11 @@ import org.mozilla.fenix.browser.browsingmode.BrowsingModeManager
 import org.mozilla.fenix.browser.browsingmode.DefaultBrowsingModeManager
 import org.mozilla.fenix.components.appstate.AppAction
 import org.mozilla.fenix.components.metrics.BreadcrumbsRecorder
+import org.mozilla.fenix.components.metrics.GrowthDataWorker
 import org.mozilla.fenix.databinding.ActivityHomeBinding
 import org.mozilla.fenix.exceptions.trackingprotection.TrackingProtectionExceptionsFragmentDirections
 import org.mozilla.fenix.experiments.ResearchSurfaceDialogFragment
 import org.mozilla.fenix.ext.alreadyOnDestination
-import org.mozilla.fenix.ext.areNotificationsEnabledSafe
 import org.mozilla.fenix.ext.breadcrumb
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.hasTopDestination
@@ -105,6 +106,7 @@ import org.mozilla.fenix.home.intent.AssistIntentProcessor
 import org.mozilla.fenix.home.intent.CrashReporterIntentProcessor
 import org.mozilla.fenix.home.intent.HomeDeepLinkIntentProcessor
 import org.mozilla.fenix.home.intent.OpenBrowserIntentProcessor
+import org.mozilla.fenix.home.intent.OpenPasswordManagerIntentProcessor
 import org.mozilla.fenix.home.intent.OpenSpecificTabIntentProcessor
 import org.mozilla.fenix.home.intent.ReEngagementIntentProcessor
 import org.mozilla.fenix.home.intent.SpeechProcessingIntentProcessor
@@ -118,7 +120,6 @@ import org.mozilla.fenix.messaging.FenixMessageSurfaceId
 import org.mozilla.fenix.messaging.FenixNimbusMessagingController
 import org.mozilla.fenix.messaging.MessageNotificationWorker
 import org.mozilla.fenix.nimbus.FxNimbus
-import org.mozilla.fenix.onboarding.FenixOnboarding
 import org.mozilla.fenix.onboarding.ReEngagementNotificationWorker
 import org.mozilla.fenix.onboarding.ensureMarketingChannelExists
 import org.mozilla.fenix.perf.MarkersActivityLifecycleCallbacks
@@ -141,6 +142,7 @@ import org.mozilla.fenix.settings.logins.fragment.SavedLoginsAuthFragmentDirecti
 import org.mozilla.fenix.settings.quicksettings.protections.cookiebanners.dialog.CookieBannerReEngagementDialogUtils
 import org.mozilla.fenix.settings.search.AddSearchEngineFragmentDirections
 import org.mozilla.fenix.settings.search.EditCustomSearchEngineFragmentDirections
+import org.mozilla.fenix.settings.search.SaveSearchEngineFragmentDirections
 import org.mozilla.fenix.settings.studies.StudiesFragmentDirections
 import org.mozilla.fenix.settings.wallpaper.WallpaperSettingsFragmentDirections
 import org.mozilla.fenix.share.AddNewDeviceFragmentDirections
@@ -150,7 +152,6 @@ import org.mozilla.fenix.tabstray.TabsTrayFragmentDirections
 import org.mozilla.fenix.theme.DefaultThemeManager
 import org.mozilla.fenix.theme.ThemeManager
 import org.mozilla.fenix.trackingprotection.TrackingProtectionPanelDialogFragmentDirections
-import org.mozilla.fenix.utils.BrowsersCache
 import org.mozilla.fenix.utils.Settings
 import java.lang.ref.WeakReference
 import java.util.Locale
@@ -194,8 +195,6 @@ open class HomeActivity : LocaleAwareAppCompatActivity(), NavHostActivity {
         supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
     }
 
-    private val onboarding by lazy { FenixOnboarding(applicationContext) }
-
     private val externalSourceIntentProcessors by lazy {
         listOf(
             HomeDeepLinkIntentProcessor(this),
@@ -204,6 +203,7 @@ open class HomeActivity : LocaleAwareAppCompatActivity(), NavHostActivity {
             StartSearchIntentProcessor(),
             OpenBrowserIntentProcessor(this, ::getIntentSessionId),
             OpenSpecificTabIntentProcessor(this),
+            OpenPasswordManagerIntentProcessor(),
             ReEngagementIntentProcessor(this, settings()),
         )
     }
@@ -224,6 +224,8 @@ open class HomeActivity : LocaleAwareAppCompatActivity(), NavHostActivity {
         // DO NOT MOVE ANYTHING ABOVE THIS getProfilerTime CALL.
         val startTimeProfiler = components.core.engine.profiler?.getProfilerTime()
 
+        // Setup nimbus-cli tooling. This is a NOOP when launching normally.
+        components.analytics.experiments.initializeTooling(applicationContext, intent)
         components.strictMode.attachListenerToDisablePenaltyDeath(supportFragmentManager)
         MarkersFragmentLifecycleCallbacks.register(supportFragmentManager, components.core.engine)
 
@@ -271,10 +273,14 @@ open class HomeActivity : LocaleAwareAppCompatActivity(), NavHostActivity {
             it.start()
         }
 
-        if (settings().shouldShowJunoOnboarding(intent.toSafeIntent().isLauncherIntent)) {
+        if (settings().shouldShowJunoOnboarding(
+                hasUserBeenOnboarded = components.fenixOnboarding.userHasBeenOnboarded(),
+                isLauncherIntent = intent.toSafeIntent().isLauncherIntent,
+            )
+        ) {
             // Unless activity is recreated due to config change, navigate to onboarding
             if (savedInstanceState == null) {
-                navHost.navController.navigate(NavGraphDirections.actionGlobalHomeJunoOnboarding())
+                navHost.navController.navigate(NavGraphDirections.actionGlobalJunoOnboarding())
             }
         } else {
             lifecycleScope.launch(IO) {
@@ -292,7 +298,7 @@ open class HomeActivity : LocaleAwareAppCompatActivity(), NavHostActivity {
                 StartOnHome.enterHomeScreen.record(NoExtras())
             }
 
-            if (settings().showHomeOnboardingDialog && onboarding.userHasBeenOnboarded()) {
+            if (settings().showHomeOnboardingDialog && components.fenixOnboarding.userHasBeenOnboarded()) {
                 navHost.navController.navigate(NavGraphDirections.actionGlobalHomeOnboardingDialog())
             }
             showNotificationPermissionPromptIfRequired()
@@ -448,6 +454,7 @@ open class HomeActivity : LocaleAwareAppCompatActivity(), NavHostActivity {
                 Events.defaultBrowserChanged.record(NoExtras())
             }
 
+            GrowthDataWorker.sendActivatedSignalIfNeeded(applicationContext)
             ReEngagementNotificationWorker.setReEngagementNotificationIfNeeded(applicationContext)
             MessageNotificationWorker.setMessageNotificationWorker(applicationContext)
         }
@@ -506,11 +513,11 @@ open class HomeActivity : LocaleAwareAppCompatActivity(), NavHostActivity {
                     applicationContext,
                     showMobileRoot = false,
                 ).withOptionalDesktopFolders(it)
-                settings().desktopBookmarksSize = getBookmarkCount(desktopRootNode)
+                settings().desktopBookmarksSize = desktopRootNode.count()
             }
 
             components.core.bookmarksStorage.getTree(BookmarkRoot.Mobile.id, true)?.let {
-                settings().mobileBookmarksSize = getBookmarkCount(it)
+                settings().mobileBookmarksSize = it.count()
             }
         }
 
@@ -538,25 +545,6 @@ open class HomeActivity : LocaleAwareAppCompatActivity(), NavHostActivity {
         super.onProvideAssistContent(outContent)
         val currentTabUrl = components.core.store.state.selectedTab?.content?.url
         outContent?.webUri = currentTabUrl?.let { Uri.parse(it) }
-    }
-
-    private fun getBookmarkCount(node: BookmarkNode): Int {
-        val children = node.children
-        return if (children == null) {
-            0
-        } else {
-            var count = 0
-
-            for (child in children) {
-                if (child.type == BookmarkNodeType.FOLDER) {
-                    count += getBookmarkCount(child)
-                } else if (child.type == BookmarkNodeType.ITEM) {
-                    count++
-                }
-            }
-
-            count
-        }
     }
 
     override fun onDestroy() {
@@ -708,7 +696,7 @@ open class HomeActivity : LocaleAwareAppCompatActivity(), NavHostActivity {
                 return
             }
         }
-        super.getOnBackPressedDispatcher().onBackPressed()
+        onBackPressedDispatcher.onBackPressed()
     }
 
     @Deprecated("Deprecated in Java")
@@ -954,6 +942,8 @@ open class HomeActivity : LocaleAwareAppCompatActivity(), NavHostActivity {
             AddSearchEngineFragmentDirections.actionGlobalBrowser(customTabSessionId)
         BrowserDirection.FromEditCustomSearchEngineFragment ->
             EditCustomSearchEngineFragmentDirections.actionGlobalBrowser(customTabSessionId)
+        BrowserDirection.FromSaveSearchEngineFragment ->
+            SaveSearchEngineFragmentDirections.actionGlobalBrowser(customTabSessionId)
         BrowserDirection.FromAddonDetailsFragment ->
             AddonDetailsFragmentDirections.actionGlobalBrowser(customTabSessionId)
         BrowserDirection.FromAddonPermissionsDetailsFragment ->
@@ -1062,7 +1052,11 @@ open class HomeActivity : LocaleAwareAppCompatActivity(), NavHostActivity {
     }
 
     open fun navigateToHome() {
-        navHost.navController.navigate(NavGraphDirections.actionStartupHome())
+        if (components.fenixOnboarding.userHasBeenOnboarded()) {
+            navHost.navController.navigate(NavGraphDirections.actionStartupHome())
+        } else {
+            navHost.navController.navigate(NavGraphDirections.actionStartupOnboarding())
+        }
     }
 
     override fun attachBaseContext(base: Context) {
@@ -1228,6 +1222,7 @@ open class HomeActivity : LocaleAwareAppCompatActivity(), NavHostActivity {
         const val OPEN_TO_SEARCH = "open_to_search"
         const val PRIVATE_BROWSING_MODE = "private_browsing_mode"
         const val START_IN_RECENTS_SCREEN = "start_in_recents_screen"
+        const val OPEN_PASSWORD_MANAGER = "open_password_manager"
 
         // PWA must have been used within last 30 days to be considered "recently used" for the
         // telemetry purposes.
