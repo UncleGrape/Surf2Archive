@@ -66,6 +66,20 @@ class SaveToPDFMiddleware(
 
                 postTelemetryFailed(ctx.state.findTab(action.tabId), action.throwable)
             }
+
+            is EngineAction.PrintContentAction -> {
+                next(action)
+                // Reserved for telemetry in bug 1837517
+            }
+            is EngineAction.PrintContentCompletedAction -> {
+                // No-op, reserved for telemetry in bug 1837517
+            }
+            is EngineAction.PrintContentExceptionAction -> {
+                // Bug 1840894 - will update this toast to a snackbar with new snackbar error component
+                ThreadUtils.runOnUiThread {
+                    Toast.makeText(context, R.string.unable_to_print_error, LENGTH_LONG).show()
+                }
+            }
             else -> {
                 next(action)
             }
@@ -78,7 +92,7 @@ class SaveToPDFMiddleware(
      * @param exception - A given exception that will be properly labeled for telemetry posting.
      * @return processed failure reason to send in telemetry.
      */
-    /* package */ @VisibleForTesting
+    @VisibleForTesting // package
     fun telemetryErrorReason(exception: Exception): String {
         var failureMsg = "unknown"
         // Requiring information from GeckoView isn't a good practice,
@@ -105,7 +119,7 @@ class SaveToPDFMiddleware(
      * @param isPdfViewer - If the page has a PDF viewer or not.
      * @return processed page source type to send in telemetry.
      */
-    /* package */ @VisibleForTesting
+    @VisibleForTesting // package
     fun telemetrySource(isPdfViewer: Boolean?): String {
         val source = when (isPdfViewer) {
             null -> "unknown"

@@ -636,6 +636,8 @@
     <string name="addon_already_installed">Ҷузъи иловагӣ аллакай насб карда шуд</string>
 
     <!-- Account Preferences -->
+    <!-- Preference for managing your account via accounts.firefox.com -->
+    <string name="preferences_manage_account">Идоракунии ҳисобҳо</string>
     <!-- Preference for triggering sync -->
     <string name="preferences_sync_now">Ҳозир ҳамоҳанг кунед</string>
     <!-- Preference category for sync -->
@@ -1211,6 +1213,10 @@
     <string name="share_save_to_pdf">Нигоҳ доштан ҳамчун PDF</string>
     <!-- Text for error message when generating a PDF file Text for error message when generating a PDF file. -->
     <string name="unable_to_save_to_pdf_error">Файли PDF эҷод карда нашуд</string>
+    <!-- Text for error message when printing a page and it fails. -->
+    <string name="unable_to_print_error">Чоп ғайриимкон аст</string>
+    <!-- Text for the print feature in the share and browser menu -->
+    <string name="menu_print">Чоп кардан</string>
     <!-- Sub-header in the dialog to share a link to another sync device -->
     <string name="share_device_subheader">Фиристодан ба дастгоҳ</string>
     <!-- Sub-header in the dialog to share a link to an app from the full list -->

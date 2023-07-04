@@ -193,7 +193,7 @@
     <!-- Content description (not visible, for screen readers etc.) for the Resync tabs button -->
     <string name="resync_button_content_description">Neu synchronisieren</string>
     <!-- Browser menu button that opens the find in page menu -->
-    <string name="browser_menu_find_in_page">In Seite suchen</string>
+    <string name="browser_menu_find_in_page">Seite durchsuchen</string>
     <!-- Browser menu button that saves the current tab to a collection -->
     <string name="browser_menu_save_to_collection_2">In Sammlung speichern</string>
     <!-- Browser menu button that open a share menu to share the current site -->
@@ -1235,6 +1235,10 @@
     <string name="share_save_to_pdf">Als PDF speichern</string>
     <!-- Text for error message when generating a PDF file Text for error message when generating a PDF file. -->
     <string name="unable_to_save_to_pdf_error">PDF kann nicht generiert werden</string>
+    <!-- Text for error message when printing a page and it fails. -->
+    <string name="unable_to_print_error">Drucken nicht möglich</string>
+    <!-- Text for the print feature in the share and browser menu -->
+    <string name="menu_print">Drucken</string>
     <!-- Sub-header in the dialog to share a link to another sync device -->
     <string name="share_device_subheader">An Gerät senden</string>
     <!-- Sub-header in the dialog to share a link to an app from the full list -->
