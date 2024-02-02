@@ -44,10 +44,6 @@
     <string name="mozac_feature_prompts_content_description_input_label">Etichete associade a un cjamp pal inseriment di test</string>
     <!-- Title of a color picker dialog, this text is shown above a color picker. -->
     <string name="mozac_feature_prompts_choose_a_color">Sielç un colôr</string>
-    <!-- Title of the Identity Credential provider dialog choose. -->
-    <string name="mozac_feature_prompts_identity_credentials_choose_provider">Sielç un furnidôr di acès</string>
-    <!-- Title of an account picker dialog for identity credentials. -->
-    <string name="mozac_feature_prompts_identity_credentials_choose_account">Sielç un account</string>
     <!-- Text of a confirm button in dialog requesting to open a new window. -->
     <string name="mozac_feature_prompts_allow">Permet</string>
     <!-- Text of a negative button in dialog requesting to open a new window. -->
@@ -98,6 +94,13 @@
     <!-- Header for the select login prompt to allow users to fill a form with a saved login -->
     <string name="mozac_feature_prompts_saved_logins">Credenziâls sugjeridis</string>
 
+    <!-- Content description for the suggest strong password prompt to allow users to fill a form with a suggested strong password -->
+    <string name="mozac_feature_prompts_suggest_strong_password_content_description">Sugjerìs password complesse</string>
+    <!-- Header for the suggest strong password prompt to allow users to fill a form with a suggested strong password -->
+    <string name="mozac_feature_prompts_suggest_strong_password">Sugjerìs password complesse</string>
+    <!-- Title for using the suggest strong password confirmation dialog. %1$s will be replaced with the generated password -->
+    <string name="mozac_feature_prompts_suggest_strong_password_message">Dopre password complesse: %1$s</string>
+
     <!-- Strings shown in a dialog that appear when users try to refresh a certain kind of webpages -->
     <string name="mozac_feature_prompt_repost_title">Tornâ a inviâ i dâts a chest sît?</string>
     <string name="mozac_feature_prompt_repost_message">Se tu tornis a cjariâ cheste pagjine tu podaressis causâ la ripetizion des azions resintis, come l’inviament di un paiament o publicâ un coment dôs voltis.</string>
@@ -136,4 +139,16 @@
     <!-- Federated Credential Management prompts -->
     <!--Content description for the Account picture in the Select Account FedCM prompt -->
     <string name="mozac_feature_prompts_account_picture">Imagjin pal account</string>
+    <!-- Title of the Identity Credential provider dialog chooser. -->
+    <string name="mozac_feature_prompts_identity_credentials_choose_provider">Sielç un furnidôr di acès</string>
+    <!-- Title of an account picker dialog for identity credentials. The %1$s will be replaced with the name of the provider -->
+    <string name="mozac_feature_prompts_identity_credentials_choose_account_for_provider">Jentre cuntun account %1$s</string>
+    <!-- Title of the Identity Credential privacy policy dialog title. The %1$s will be replaced with the name of the provider. -->
+    <string name="mozac_feature_prompts_identity_credentials_privacy_policy_title">Dopre %1$s come furnidôr di acès</string>
+    <!-- Title of the Identity Credential privacy policy dialog description. The %1$s will be replaced with the name of the provider, %2$s will be replaced with the account, %3$s will be replaced with the privacy policy url and  %4$s will be replaced with the terms of service. -->
+    <string name="mozac_feature_prompts_identity_credentials_privacy_policy_description"><![CDATA[L’acès a %1$s cuntun account %2$s al sotstà ae <a href="%3$s">Informative su la riservatece</a> e ai <a href="%4$s">Tiermins dal servizi</a> di chest ultin]]></string>
+    <!-- Text for the positive button of the Identity Credential dialogs. -->
+    <string name="mozac_feature_prompts_identity_credentials_continue">Continue</string>
+    <!-- Text for the cancel button of the Identity Credential dialogs. -->
+    <string name="mozac_feature_prompts_identity_credentials_cancel">Anule</string>
 </resources>
