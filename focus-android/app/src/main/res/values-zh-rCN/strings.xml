@@ -53,7 +53,6 @@
     <string name="menu_remove_from_shortcuts">移除快捷方式</string>
 
     <!-- Menu item: Shows information about features and changes that are new to this version -->
-    <string name="menu_whats_new">新版变化</string>
     <string name="menu_settings">设置</string>
     <string name="menu_about">关于</string>
     <string name="menu_help">帮助</string>
@@ -84,10 +83,9 @@
          sharing an URL. -->
     <string name="share_dialog_title">分享方式</string>
 
-    <!-- While a browsing session is active (in the foreground or background) we will show a notification
-         so that the user doesn't forget about the website still being open. This text is shown in
-         the notification. Clicking the notification will have the same effect as clicking the "erase"
-         button in the application. -->
+    <string name="notification_erase_title_android_14">需要清除浏览历史吗？</string>
+    <string name="notification_erase_text_android_14">点按或清除此通知，即可安全清除浏览历史。</string>
+
     <string name="notification_erase_text">清除浏览记录</string>
 
     <!-- Notification action to open Focus and resume the current browsing session. -->
@@ -781,7 +779,7 @@
     <string name="phone_feature_blocked_step_permissions"><![CDATA[2. 点按<b>权限</b>]]></string>
 
     <!-- Button label that take the user to the Android App setting -->
-    <string name="phone_feature_go_to_settings">转至设置</string>
+    <string name="phone_feature_go_to_settings">前往设置</string>
 
     <!-- Third step for allowing a permission. The placeholder will be updated by, for example, "Camera" -->
     <string name="phone_feature_blocked_step_feature"><![CDATA[3. 开启<b>%1$s</b>权限]]></string>
@@ -1094,7 +1092,7 @@
     picture of search widget from promote search widget dialog. --&gt;
     <!-- Content description (not visible, for screen readers etc.): This is the description for
     picture of search widget from promote search widget dialog. -->
-    <string name="promote_search_widget_dialog_picture_content_description">搜索小部件</string>
+    <string name="promote_search_widget_dialog_picture_content_description">搜索小组件</string>
 
     !-- This is the title of promote search widget dialog. --&gt;
     <!-- This is the title of promote search widget dialog. -->
@@ -1109,17 +1107,17 @@
     of the app (e.g. &quot;Focus&quot;) --&gt;
     <!-- This is the subtitle of promote search widget dialog. %1$s will get replaced with the name
     of the app (e.g. "Focus") -->
-    <string name="promote_search_widget_dialog_subtitle">开始隐私浏览吧。想更快发起搜索，下次可以直接点按主屏幕上的 %1$s 小部件。</string>
+    <string name="promote_search_widget_dialog_subtitle">开始隐私浏览吧。想更快发起搜索，下次可以直接点按主屏幕上的 %1$s 小组件。</string>
 
     !-- This is te text from add search widget to home screen button .The button is located on
     promote search widget dialog. --&gt;
     <!-- This is te text from add search widget to home screen button .The button is located on
     promote search widget dialog. -->
-    <string name="promote_search_widget_button_text">将小部件添加至主屏幕</string>
+    <string name="promote_search_widget_button_text">将小组件添加至主屏幕</string>
 
     !-- This is te text of the snackbar that appears after the search widget was added successfully
     to the home screen. --&gt;
     <!-- This is te text of the snackbar that appears after the search widget was added successfully
     to the home screen. -->
-    <string name="promote_search_widget_snackbar_message">小部件已添加至主屏幕</string>
+    <string name="promote_search_widget_snackbar_message">小组件已添加至主屏幕</string>
 </resources>
