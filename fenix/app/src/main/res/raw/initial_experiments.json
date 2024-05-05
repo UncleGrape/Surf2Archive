@@ -2,22 +2,22 @@
   "data": [
     {
       "schemaVersion": "1.12.0",
-      "slug": "android-default-toolbar-placement",
-      "id": "android-default-toolbar-placement",
+      "slug": "android-default-toolbar-placement-treatment-a-rollout",
+      "id": "android-default-toolbar-placement-treatment-a-rollout",
       "arguments": {},
       "application": "org.mozilla.firefox",
       "appName": "fenix",
       "appId": "org.mozilla.firefox",
       "channel": "release",
-      "userFacingName": "Android default toolbar placement",
+      "userFacingName": "Android default toolbar placement - Treatment A Rollout",
       "userFacingDescription": "Testing default position of toolbar.",
       "isEnrollmentPaused": false,
-      "isRollout": false,
+      "isRollout": true,
       "bucketConfig": {
         "randomizationUnit": "nimbus_id",
-        "namespace": "fenix-toolbar-release-1",
+        "namespace": "fenix-toolbar-release-mobile_first_run-rollout-1",
         "start": 0,
-        "count": 8800,
+        "count": 10000,
         "total": 10000
       },
       "featureIds": [
@@ -27,125 +27,178 @@
       "outcomes": [],
       "branches": [
         {
+          "slug": "treatment-a",
+          "ratio": 1,
+          "feature": {
+            "featureId": "this-is-included-for-mobile-pre-96-support",
+            "enabled": false,
+            "value": {}
+          },
+          "features": [
+            {
+              "featureId": "toolbar",
+              "enabled": true,
+              "value": {
+                "toolbar-position-top": true
+              }
+            }
+          ]
+        }
+      ],
+      "targeting": "((is_already_enrolled) || ((isFirstRun == 'true') && (app_version|versionCompare('116.!') >= 0)))",
+      "startDate": "2023-08-09",
+      "enrollmentEndDate": null,
+      "endDate": null,
+      "proposedDuration": 28,
+      "proposedEnrollment": 7,
+      "referenceBranch": "treatment-a",
+      "featureValidationOptOut": false,
+      "localizations": null,
+      "locales": null,
+      "publishedDate": null
+    },
+    {
+      "schemaVersion": "1.12.0",
+      "slug": "android-onboarding-remove-sync-card",
+      "id": "android-onboarding-remove-sync-card",
+      "arguments": {},
+      "application": "org.mozilla.firefox",
+      "appName": "fenix",
+      "appId": "org.mozilla.firefox",
+      "channel": "release",
+      "userFacingName": "Android Onboarding - Remove Sync Card",
+      "userFacingDescription": "Mobile Onboarding experiment",
+      "isEnrollmentPaused": false,
+      "isRollout": false,
+      "bucketConfig": {
+        "randomizationUnit": "nimbus_id",
+        "namespace": "fenix-juno-onboarding-release-7",
+        "start": 0,
+        "count": 10000,
+        "total": 10000
+      },
+      "featureIds": [
+        "juno-onboarding"
+      ],
+      "probeSets": [],
+      "outcomes": [
+        {
+          "slug": "onboarding",
+          "priority": "primary"
+        },
+        {
+          "slug": "default-browser",
+          "priority": "secondary"
+        }
+      ],
+      "branches": [
+        {
           "slug": "control",
           "ratio": 1,
           "feature": {
-            "featureId": "toolbar",
-            "enabled": true,
-            "value": {
-              "toolbar-position-top": false
+            "featureId": "this-is-included-for-mobile-pre-96-support",
+            "enabled": false,
+            "value": {}
+          },
+          "features": [
+            {
+              "featureId": "juno-onboarding",
+              "enabled": true,
+              "value": {
+                "cards": {}
+              }
             }
-          }
+          ]
         },
         {
           "slug": "treatment-a",
           "ratio": 1,
           "feature": {
-            "featureId": "toolbar",
-            "enabled": true,
-            "value": {
-              "toolbar-position-top": true
+            "featureId": "this-is-included-for-mobile-pre-96-support",
+            "enabled": false,
+            "value": {}
+          },
+          "features": [
+            {
+              "featureId": "juno-onboarding",
+              "enabled": true,
+              "value": {
+                "cards": {
+                  "sync-sign-in": {
+                    "enabled": false
+                  }
+                }
+              }
             }
-          }
+          ]
+        },
+        {
+          "slug": "treatment-b",
+          "ratio": 1,
+          "feature": {
+            "featureId": "this-is-included-for-mobile-pre-96-support",
+            "enabled": false,
+            "value": {}
+          },
+          "features": [
+            {
+              "featureId": "juno-onboarding",
+              "enabled": true,
+              "value": {
+                "cards": {
+                  "notification-permission": {
+                    "ordering": 40
+                  },
+                  "sync-sign-in": {
+                    "ordering": 50
+                  }
+                }
+              }
+            }
+          ]
         }
       ],
-      "targeting": "((is_already_enrolled) || ((isFirstRun == 'true') && (app_version|versionCompare('115.!') >= 0)))",
-      "startDate": "2023-06-26",
-      "enrollmentEndDate": "2023-07-12",
+      "targeting": "((is_already_enrolled) || ((isFirstRun == 'true') && (app_version|versionCompare('126.!') >= 0) && (language in ['en'])))",
+      "startDate": "2024-04-30",
+      "enrollmentEndDate": null,
       "endDate": null,
-      "proposedDuration": 36,
-      "proposedEnrollment": 8,
+      "proposedDuration": 42,
+      "proposedEnrollment": 14,
       "referenceBranch": "control",
       "featureValidationOptOut": false,
       "localizations": null,
-      "locales": null
+      "locales": null,
+      "publishedDate": "2024-04-30T20:18:06.070479Z"
     },
     {
       "schemaVersion": "1.12.0",
-      "slug": "android-re-engagement-notifications-timing-v2",
-      "id": "android-re-engagement-notifications-timing-v2",
+      "slug": "splash-screen-max-duration-test-lower-times",
+      "id": "splash-screen-max-duration-test-lower-times",
       "arguments": {},
       "application": "org.mozilla.firefox",
       "appName": "fenix",
       "appId": "org.mozilla.firefox",
       "channel": "release",
-      "userFacingName": "Android re-engagement notifications timing v2",
-      "userFacingDescription": "Testing timing of how we enable re-engagement notifications.",
-      "isEnrollmentPaused": false,
-      "isRollout": false,
-      "bucketConfig": {
-        "randomizationUnit": "nimbus_id",
-        "namespace": "fenix-re-engagement-notification-release-3",
-        "start": 5000,
-        "count": 5000,
-        "total": 10000
-      },
-      "featureIds": [
-        "re-engagement-notification"
-      ],
-      "probeSets": [],
-      "outcomes": [],
-      "branches": [
-        {
-          "slug": "control-off-branch",
-          "ratio": 1,
-          "feature": {
-            "featureId": "re-engagement-notification",
-            "enabled": true,
-            "value": {
-              "enabled": false
-            }
-          }
-        },
-        {
-          "slug": "treatment-privacy-notification",
-          "ratio": 1,
-          "feature": {
-            "featureId": "re-engagement-notification",
-            "enabled": true,
-            "value": {
-              "enabled": true,
-              "type": 0
-            }
-          }
-        }
-      ],
-      "targeting": "((is_already_enrolled) || ((isFirstRun == 'true') && (app_version|versionCompare('115.!') >= 0)))",
-      "startDate": "2023-06-28",
-      "enrollmentEndDate": "2023-07-18",
-      "endDate": null,
-      "proposedDuration": 30,
-      "proposedEnrollment": 14,
-      "referenceBranch": "control-off-branch",
-      "featureValidationOptOut": false,
-      "localizations": null,
-      "locales": null
-    },
-    {
-      "schemaVersion": "1.12.0",
-      "slug": "lifestyles-images-onboarding-experiment-v3",
-      "id": "lifestyles-images-onboarding-experiment-v3",
-      "arguments": {},
-      "application": "org.mozilla.firefox",
-      "appName": "fenix",
-      "appId": "org.mozilla.firefox",
-      "channel": "release",
-      "userFacingName": "Lifestyles images onboarding experiment v3",
-      "userFacingDescription": "This experiment tests different sets of images for the same onboarding card messages to see if one is preferred.",
+      "userFacingName": "Splash screen max duration test - lower times",
+      "userFacingDescription": "Testing a splashscreen on app launch.",
       "isEnrollmentPaused": true,
       "isRollout": false,
       "bucketConfig": {
         "randomizationUnit": "nimbus_id",
-        "namespace": "fenix-juno-onboarding-release-2",
+        "namespace": "fenix-splash-screen-release-3",
         "start": 0,
         "count": 10000,
         "total": 10000
       },
       "featureIds": [
-        "juno-onboarding"
+        "splash-screen"
       ],
       "probeSets": [],
       "outcomes": [
+        {
+          "slug": "onboarding",
+          "priority": "primary"
+        },
         {
           "slug": "default-browser",
           "priority": "primary"
@@ -156,132 +209,71 @@
           "slug": "control",
           "ratio": 1,
           "feature": {
-            "featureId": "juno-onboarding",
-            "enabled": true,
-            "value": {
-              "enabled": true
+            "featureId": "this-is-included-for-mobile-pre-96-support",
+            "enabled": false,
+            "value": {}
+          },
+          "features": [
+            {
+              "featureId": "splash-screen",
+              "enabled": true,
+              "value": {
+                "enabled": true,
+                "maximum_duration_ms": 0
+              }
             }
-          }
+          ]
         },
         {
           "slug": "treatment-a",
           "ratio": 1,
           "feature": {
-            "featureId": "juno-onboarding",
-            "enabled": true,
-            "value": {
+            "featureId": "this-is-included-for-mobile-pre-96-support",
+            "enabled": false,
+            "value": {}
+          },
+          "features": [
+            {
+              "featureId": "splash-screen",
               "enabled": true,
-              "cards": {
-                "default-browser": {
-                  "image-res": "onboarding_default_browser",
-                  "image-is-illustration": false
-                },
-                "sync-sign-in": {
-                  "image-res": "onboarding_sync",
-                  "image-is-illustration": false
-                },
-                "notification-permission": {
-                  "image-res": "onboarding_notification",
-                  "image-is-illustration": false
-                }
+              "value": {
+                "enabled": true,
+                "maximum_duration_ms": 1750
               }
             }
-          }
-        }
-      ],
-      "targeting": "((is_already_enrolled) || ((isFirstRun == 'true') && (app_version|versionCompare('114.!') >= 0) && (language in ['en'])))",
-      "startDate": "2023-06-09",
-      "enrollmentEndDate": "2023-06-21",
-      "endDate": null,
-      "proposedDuration": 35,
-      "proposedEnrollment": 14,
-      "referenceBranch": "control",
-      "featureValidationOptOut": false,
-      "localizations": null,
-      "locales": null
-    },
-    {
-      "schemaVersion": "1.12.0",
-      "slug": "on-boarding-challenge-the-default",
-      "id": "on-boarding-challenge-the-default",
-      "arguments": {},
-      "application": "org.mozilla.firefox",
-      "appName": "fenix",
-      "appId": "org.mozilla.firefox",
-      "channel": "release",
-      "userFacingName": "On-boarding Challenge the Default",
-      "userFacingDescription": "Testing copy and images in the first run onboarding that is consistent with marketing messaging.",
-      "isEnrollmentPaused": false,
-      "isRollout": false,
-      "bucketConfig": {
-        "randomizationUnit": "nimbus_id",
-        "namespace": "fenix-juno-onboarding-release-3",
-        "start": 0,
-        "count": 10000,
-        "total": 10000
-      },
-      "featureIds": [
-        "juno-onboarding"
-      ],
-      "probeSets": [],
-      "outcomes": [
-        {
-          "slug": "default-browser",
-          "priority": "primary"
-        }
-      ],
-      "branches": [
-        {
-          "slug": "control",
-          "ratio": 1,
-          "feature": {
-            "featureId": "juno-onboarding",
-            "enabled": true,
-            "value": {
-              "enabled": true
-            }
-          }
+          ]
         },
         {
-          "slug": "treatment-a",
+          "slug": "treatment-b",
           "ratio": 1,
           "feature": {
-            "featureId": "juno-onboarding",
-            "enabled": true,
-            "value": {
+            "featureId": "this-is-included-for-mobile-pre-96-support",
+            "enabled": false,
+            "value": {}
+          },
+          "features": [
+            {
+              "featureId": "splash-screen",
               "enabled": true,
-              "cards": {
-                "default-browser": {
-                  "title": "Du entscheidest, was Standard ist",
-                  "body": "Nimm nicht das Erstbeste, sondern das Beste für dich: Firefox schützt deine Privatsphäre.\n\nLies unseren Datenschutzhinweis.",
-                  "link-text": "Datenschutzhinweis",
-                  "image-res": "onboarding_ctd_default_browser"
-                },
-                "sync-sign-in": {
-                  "title": "Alles ist dort, wo du es brauchst",
-                  "body": "Wenn du willst, bringt Firefox deine Tabs und Passwörter auf all deine Geräte.",
-                  "image-res": "onboarding_ctd_sync"
-                },
-                "notification-permission": {
-                  "title": "Du bestimmst, was Firefox kann",
-                  "body": "Benachrichtigungen helfen dabei, Downloads zu managen und Tabs zwischen Geräten zu senden.",
-                  "image-res": "onboarding_ctd_notification"
-                }
+              "value": {
+                "enabled": true,
+                "maximum_duration_ms": 2500
               }
             }
-          }
+          ]
         }
       ],
-      "targeting": "((is_already_enrolled) || ((isFirstRun == 'true') && (app_version|versionCompare('115.!') >= 0) && (language in ['de']) && (region in ['DE'])))",
-      "startDate": "2023-06-21",
-      "enrollmentEndDate": "2023-07-18",
+      "targeting": "((is_already_enrolled) || ((isFirstRun == 'true') && (app_version|versionCompare('124.!') >= 0) && (region in ['AD', 'AE', 'AF', 'AG', 'AI', 'AL', 'AM', 'AO', 'AQ', 'AR', 'AS', 'AT', 'AU', 'AW', 'AX', 'AZ', 'BA', 'BB', 'BD', 'BE', 'BF', 'BG', 'BH', 'BI', 'BJ', 'BL', 'BM', 'BN', 'BO', 'BQ', 'BR', 'BS', 'BT', 'BV', 'BW', 'BY', 'BZ', 'CA', 'CC', 'CD', 'CF', 'CG', 'CH', 'CI', 'CK', 'CL', 'CM', 'CN', 'CO', 'CR', 'CU', 'CV', 'CW', 'CX', 'CY', 'CZ', 'DJ', 'DK', 'DM', 'DO', 'DZ', 'EC', 'EE', 'EG', 'EH', 'ER', 'ES', 'ET', 'FI', 'FJ', 'FK', 'FM', 'FO', 'FR', 'GA', 'GB', 'GD', 'GE', 'GF', 'GG', 'GH', 'GI', 'GL', 'GM', 'GN', 'GP', 'GQ', 'GR', 'GS', 'GT', 'GU', 'GW', 'GY', 'HK', 'HM', 'HN', 'HR', 'HT', 'HU', 'ID', 'IE', 'IL', 'IM', 'IN', 'IO', 'IQ', 'IR', 'IS', 'IT', 'JE', 'JM', 'JO', 'JP', 'KE', 'KG', 'KH', 'KI', 'KM', 'KN', 'KP', 'KR', 'KW', 'KY', 'KZ', 'LA', 'LB', 'LC', 'LI', 'LK', 'LR', 'LS', 'LT', 'LU', 'LV', 'LY', 'MA', 'MC', 'MD', 'ME', 'MF', 'MG', 'MH', 'MK', 'ML', 'MM', 'MN', 'MO', 'MP', 'MQ', 'MR', 'MS', 'MT', 'MU', 'MV', 'MW', 'MX', 'MY', 'MZ', 'NA', 'NC', 'NE', 'NF', 'NG', 'NI', 'NL', 'NO', 'NP', 'NR', 'NU', 'NZ', 'OM', 'PA', 'PE', 'PF', 'PG', 'PH', 'PK', 'PL', 'PM', 'PN', 'PR', 'PS', 'PT', 'PW', 'PY', 'QA', 'RE', 'RO', 'RS', 'RU', 'RW', 'SA', 'SB', 'SC', 'SD', 'SE', 'SG', 'SH', 'SI', 'SJ', 'SK', 'SL', 'SM', 'SN', 'SO', 'SR', 'SS', 'ST', 'SV', 'SX', 'SY', 'SZ', 'TC', 'TD', 'TF', 'TG', 'TH', 'TJ', 'TK', 'TL', 'TM', 'TN', 'TO', 'TR', 'TT', 'TV', 'TW', 'TZ', 'UA', 'UG', 'UM', 'US', 'UY', 'UZ', 'VA', 'VC', 'VE', 'VG', 'VI', 'VN', 'VU', 'WF', 'WS', 'YE', 'YT', 'ZA', 'ZM', 'ZW'])))",
+      "startDate": "2024-03-13",
+      "enrollmentEndDate": "2024-04-03",
       "endDate": null,
-      "proposedDuration": 30,
-      "proposedEnrollment": 14,
+      "proposedDuration": 56,
+      "proposedEnrollment": 28,
       "referenceBranch": "control",
       "featureValidationOptOut": false,
       "localizations": null,
-      "locales": null
+      "locales": null,
+      "publishedDate": "2024-03-13T15:04:41.938148Z"
     }
   ]
 }
