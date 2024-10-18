@@ -54,7 +54,6 @@
     <string name="menu_remove_from_shortcuts">ਸ਼ਾਰਟਕੱਟ ਵਿੱਚੋਂ ਹਟਾਓ</string>
 
     <!-- Menu item: Shows information about features and changes that are new to this version -->
-    <string name="menu_whats_new">ਨਵਾਂ ਕੀ ਹੈ</string>
     <string name="menu_settings">ਸੈਟਿੰਗਾਂ</string>
     <string name="menu_about">ਇਸ ਬਾਰੇ</string>
     <string name="menu_help">ਮਦਦ</string>
@@ -85,10 +84,13 @@
          sharing an URL. -->
     <string name="share_dialog_title">ਇਸ ਰਾਹੀਂ ਸਾਂਝਾ ਕਰੋ</string>
 
-    <!-- While a browsing session is active (in the foreground or background) we will show a notification
-         so that the user doesn't forget about the website still being open. This text is shown in
-         the notification. Clicking the notification will have the same effect as clicking the "erase"
-         button in the application. -->
+    <string name="notification_erase_title_android_14">ਬਰਾਊਜ਼ ਕਰਨ ਦੇ ਅਤੀਤ ਨੂੰ ਮਿਟਾਉਣਾ ਹੈ?</string>
+    <string name="notification_erase_text_android_14" moz:RemovedIn="124" tools:ignore="UnusedResources">ਤੁਹਾਡੇ ਬਰਾਊਜ਼ ਕਰਨ ਦੇ ਅਤੀਤ ਨੂੰ ਸੁਰੱਖਿਅਤ ਢੰਗ ਨਾਲ ਮਿਟਾਉਣ ਲਈ ਇਸ ਨੋਟੀਫਿਕੇਸ਼ਨ ਨੂੰ ਛੂਹੋ ਜਾਂ ਸਾਫ਼ ਕਰੋ।</string>
+
+    <!-- Text shown in the notification description that pops up to remind the user that a browsing session is active
+    for Android 14+. -->
+    <string name="notification_erase_text_android_14_1">ਤੁਹਾਡੇ ਬਰਾਊਜ਼ ਕਰਨ ਦੇ ਅਤੀਤ ਨੂੰ ਸੁਰੱਖਿਅਤ ਢੰਗ ਨਾਲ ਮਿਟਾਉਣ ਲਈ ਇਸ ਨੋਟੀਫਿਕੇਸ਼ਨ ਨੂੰ ਛੂਹੋ ਜਾਂ ਸਰਕਾਓ।</string>
+
     <string name="notification_erase_text">ਬਰਾਊਜ਼ਰ ਕਰਨ ਦੇ ਅਤੀਤ ਨੂੰ ਮਿਟਾਓ</string>
 
     <!-- Notification action to open Focus and resume the current browsing session. -->
@@ -122,23 +124,23 @@
     <!-- This is the label of an action we offer when the user selects text in other third-party apps.
          Focus is hard coded since we can't use variables in this context.
          Do not translate or transliterate Focus.-->
-    <string name="text_selection_search_action_focus">Focus ਵਿੱਚ ਲੱਭੋ</string>
+    <string name="text_selection_search_action_focus" tools:ignore="BrandUsage">Focus ਵਿੱਚ ਲੱਭੋ</string>
     <!-- This is the label of an action we offer when the user selects text in other third-party apps.
              Klar is hard coded since we can't use variables in this context.
              Do not translate or transliterate Klar.-->
-    <string name="text_selection_search_action_klar">Klar ਵਿੱਚ ਲੱਭੋ</string>
+    <string name="text_selection_search_action_klar" tools:ignore="BrandUsage">Klar ਵਿੱਚ ਲੱਭੋ</string>
     <!-- This is the label of an action we offer when the user selects text in other third-party apps.
             Focus Beta is hard coded since we can't use variables in this context.
             Do not translate or transliterate Focus Beta.-->
-    <string name="text_selection_search_action_focus_beta">Focus Beta ਵਿੱਚ ਲੱਭੋ</string>
+    <string name="text_selection_search_action_focus_beta" tools:ignore="BrandUsage">Focus Beta ਵਿੱਚ ਲੱਭੋ</string>
     <!-- This is the label of an action we offer when the user selects text in other third-party apps.
           Focus Nightly is hard coded since we can't use variables in this context.
           Do not translate or transliterate Focus Nightly.-->
-    <string name="text_selection_search_action_focus_nightly">Focus Nightly ਵਿੱਚ ਲੱਭੋ</string>
+    <string name="text_selection_search_action_focus_nightly" tools:ignore="BrandUsage">Focus Nightly ਵਿੱਚ ਲੱਭੋ</string>
 
     <!-- Content of about focus. Argument 1 is the app name (Firefox Focus/Firefox Klar/etc).
          Argument 2 is the url for the learn-more link. -->
-    <string name="about_content"><![CDATA[<p>%1$s ਕੰਟਰੋਲ ਤੁਹਾਡੇ ਹੱਥ ਦਿੰਦਾ ਹੈ।</p>
+    <string name="about_content" tools:ignore="IncorrectStraightDoubleQuote"><![CDATA[<p>%1$s ਕੰਟਰੋਲ ਤੁਹਾਡੇ ਹੱਥ ਦਿੰਦਾ ਹੈ।</p>
 <p>ਇਸ ਨੂੰ ਨਿੱਜੀ ਬਰਾਊਜ਼ਰ ਵਜੋਂ ਵਰਤੋਂ:
   <ul>
     <li>ਐਪ ਦੇ ਵਿੱਚ ਖੋਲ੍ਹੋ ਅਤੇ ਬਰਾਊਜ਼ ਕਰੋp</li>
@@ -604,9 +606,12 @@
     <!-- Label for a button in the "tabs tray" to erase the browsing history (closes all tabs and removes associated data). -->
     <string name="tabs_tray_action_erase">ਬਰਾਊਜ਼ ਕਰਨ ਦਾ ਅਤੀਤ ਮਿਟਾਓ</string>
 
+    <!-- Label for the option in the Focus "tabs tray" to clos the other tabs except the current tab. -->
+    <string name="tabs_tray_action_erase_other">ਹੋਰ ਟੈਬਾਂ ਨੂੰ ਬੰਦ ਕਰੋ</string>
+
     <!-- If the user decides to open the current page in another browser and if Firefox is not installed then we show this
       item in the list of browsers. Clicking it will open the app store installed on the device (usually that's Google Play). -->
-    <string name="download_firefox">ਫਾਇਰਫਾਕਸ ਡਾਊਨਲੋਡ ਕਰੋ</string>
+    <string name="download_firefox" tools:ignore="BrandUsage">Firefox ਡਾਊਨਲੋਡ ਕਰੋ</string>
 
     <!-- Text shown in the "Your rights" screen.
     %1$s will be replaced with the name of the app (e.g. Firefox Focus)-->
@@ -615,23 +620,23 @@
     <!-- Text shown in the "Your rights" screen.
     %1$s will be replaced with the name of the app (e.g. Firefox Focus)
     %2$s will be replaced with a URL linking to the MPL (e.g. https://www.mozilla.org/en-US/MPL/) -->
-    <string name="your_rights_content2"><![CDATA[%1$s ਤੁਹਾਨੂੰ <a href="%2$s">Mozilla ਜਨਤਕ ਲਸੰਸ</a> ਅਤੇ ਹੋਰ ਖੁੱਲ੍ਹੇ ਵਸੀਲਿਆਂ ਦੇ ਲਸੰਸਾਂ ਦੀਆਂ ਸ਼ਰਤਾਂ ਹੇਠ ਮੁਹੱਈਆ ਕਰਵਾਇਆ ਗਿਆ ਹੈ।]]></string>
+    <string name="your_rights_content2" tools:ignore="IncorrectStraightDoubleQuote"><![CDATA[%1$s ਤੁਹਾਨੂੰ <a href="%2$s">Mozilla ਜਨਤਕ ਲਸੰਸ</a> ਅਤੇ ਹੋਰ ਖੁੱਲ੍ਹੇ ਵਸੀਲਿਆਂ ਦੇ ਲਸੰਸਾਂ ਦੀਆਂ ਸ਼ਰਤਾਂ ਹੇਠ ਮੁਹੱਈਆ ਕਰਵਾਇਆ ਗਿਆ ਹੈ।]]></string>
 
     <!-- Text shown in the "Your rights" screen.
     %1$s will be replaced with the name of the app (e.g. Firefox Focus)
     %2$s will be replaced with a URL linking to the trademark policy (e.g. https://www.mozilla.org/foundation/trademarks/policy/) -->
-    <string name="your_rights_content3"><![CDATA[ਤੁਹਾਨੂੰ Mozilla Foundation ਜਾਂMozilla, Firefox ਜਾਂ %1$s ਨਾਂ ਜਾਂ ਲੋਗੋ ਸਮੇਤ ਕਿਸੇ ਵੀ ਪਾਰਟੀ ਦੇ ਮਾਰਕੇ ਲਈ ਕੋਈ ਅਧਿਕਾਰ ਜਾਂ ਲਸੰਸ ਨਹੀਂ ਮਿਲੇ ਹਨ। ਵਾਧੂ ਜਾਣਕਾਰੀ ਵੀ <a href="%2$s"> ਇੱਥੇ</a>ਮਿਲ ਸਕਦੀ ਹੈ।]]></string>
+    <string name="your_rights_content3" tools:ignore="BrandUsage,IncorrectStraightDoubleQuote"><![CDATA[ਤੁਹਾਨੂੰ Mozilla Foundation ਜਾਂ Mozilla, Firefox ਜਾਂ %1$s ਨਾਂ ਜਾਂ ਲੋਗੋ ਸਮੇਤ ਕਿਸੇ ਵੀ ਪਾਰਟੀ ਦੇ ਮਾਰਕੇ ਲਈ ਕੋਈ ਅਧਿਕਾਰ ਜਾਂ ਲਸੰਸ ਨਹੀਂ ਮਿਲੇ ਹਨ। ਵਾਧੂ ਜਾਣਕਾਰੀ ਵੀ <a href="%2$s"> ਇੱਥੇ</a>ਮਿਲ ਸਕਦੀ ਹੈ।]]></string>
 
     <!-- Text shown in the "Your rights" screen.
     %1$s will be replaced with the name of the app (e.g. Firefox Focus)
     %2$s will be replaced with a URL linking to the list of licenses used by the dependencies.-->
-    <string name="your_rights_content4"><![CDATA[%1$s ਲਈ ਹੋਰ ਸੋਰਸ ਕੋਡ ਹੋਰ ਕਈ ਮੁਫਤ ਅਤੇ ਖੁੱਲ੍ਹੇ ਵਸੀਲਿਆਂ (ਓਪਨ ਸੋਰਸ) ਦੇ <a href="%2$s">ਲਸੰਸਾਂ</a> ਹੇਠ ਮਿਲਦਾ ਹੈ।]]></string>
+    <string name="your_rights_content4" tools:ignore="IncorrectStraightDoubleQuote"><![CDATA[%1$s ਲਈ ਹੋਰ ਸੋਰਸ ਕੋਡ ਹੋਰ ਕਈ ਮੁਫਤ ਅਤੇ ਖੁੱਲ੍ਹੇ ਵਸੀਲਿਆਂ (ਓਪਨ ਸੋਰਸ) ਦੇ <a href="%2$s">ਲਸੰਸਾਂ</a> ਹੇਠ ਮਿਲਦਾ ਹੈ।]]></string>
 
     <!-- Text shown in the "Your rights" screen.
     %1$s will be replaced with the name of the app (e.g. Firefox Focus)
     %2$s will be replaced with a URL linking to the GPL
     %3$s will be replaced with a URL linking to the tracking protection wiki page (e.g. https://wiki.mozilla.org/Security/Tracking_protection#Lists) -->
-    <string name="your_rights_content5"><![CDATA[%1$s Disconnect, Inc. ਵਲੋਂ ਪਾਬੰਦੀਸੁਦਾ-ਸੂਚੀਆਂ ਦੀ ਵਰਤੋਂ ਵੱਖਰੇ ਅਤੇ ਆਜ਼ਾਦਾਨਾ ਤੌਰ ਉੱਤੇ <a href="%2$s">GNU ਜਰਨਲ ਪਬਲਿਕ ਲਸੰਸ v3</a> ਦੇ ਤਹਿਤ ਕਰਦਾ ਹੈ ਅਤੇ ਇਹ <a href="%3$s">ਇੱਥੇ ਮੌਜੂਦ ਹੈ</a>।]]></string>
+    <string name="your_rights_content5" tools:ignore="IncorrectStraightDoubleQuote"><![CDATA[%1$s Disconnect, Inc. ਵਲੋਂ ਪਾਬੰਦੀਸੁਦਾ-ਸੂਚੀਆਂ ਦੀ ਵਰਤੋਂ ਵੱਖਰੇ ਅਤੇ ਆਜ਼ਾਦਾਨਾ ਤੌਰ ਉੱਤੇ <a href="%2$s">GNU ਜਰਨਲ ਪਬਲਿਕ ਲਸੰਸ v3</a> ਦੇ ਤਹਿਤ ਕਰਦਾ ਹੈ ਅਤੇ ਇਹ <a href="%3$s">ਇੱਥੇ ਮੌਜੂਦ ਹੈ</a>।]]></string>
 
     <!-- Text shown in prompts for GeckoView -->
     <string name="gv_prompt_username_hint">ਵਰਤੋਂਕਾਰ-ਨਾਂ</string>
@@ -823,7 +828,7 @@
     <string name="preference_studies">ਅਧਿਐਨ</string>
 
     <!-- Preference for studies summary-->
-    <string name="preference_studies_summary">Firefox ਸਮੇਂ ਸਮੇਂ ਉੱਤੇ ਅਧਿਐਨ ਇੰਸਟਾਲ ਕਰ ਤੇ ਚਲਾ ਸਕਦਾ ਹੈ।</string>
+    <string name="preference_studies_summary" tools:ignore="BrandUsage">Firefox ਸਮੇਂ ਸਮੇਂ ਉੱਤੇ ਅਧਿਐਨ ਇੰਸਟਾਲ ਕਰ ਤੇ ਚਲਾ ਸਕਦਾ ਹੈ।</string>
 
     <!-- Learn more link for studies, links to an article for more information about studies. -->
     <string name="studies_learn_more">ਹੋਰ ਜਾਣੋ</string>
@@ -923,7 +928,7 @@
     <string name="open_new_tab_snackbar">ਬਦਲੋ</string>
 
     <!-- Text displayed in a notification when the user enters full screen mode -->
-    <string name="full_screen_notification">ਪੂਰੀ ਸਕਰੀਨ ਢੰਗ ਵਿੱਚ ਜਾ ਰਿਹਾ ਹੈ</string>
+    <string name="full_screen_notification" moz:removedIn="130" tools:ignore="UnusedResources">ਪੂਰੀ ਸਕਰੀਨ ਢੰਗ ਵਿੱਚ ਜਾ ਰਿਹਾ ਹੈ</string>
 
     <!-- Preference for switching to a new tab immediately after opening -->
     <string name="preference_open_new_tab">ਲਿੰਕ ਨੂੰ ਤੁਰੰਤ ਨੂੰ ਨਵੀਂ ਟੈਬ ਵਿੱਚ ਬਦਲੋ</string>
@@ -1031,7 +1036,7 @@
 
     <!-- The text of the error page for websites that do not support HTTPS when HTTPS-Only is turned on. %1$s will get replaced with the name of the app (e.g. "Firefox Focus").
         Contains a button that will redirect the user to Privacy & Security Screen-->
-    <string name="errorpage_httpsonly_message2"><![CDATA[%1$s ਜਦੋਂ ਵੀ ਸੰਭਵ ਹੋ ਸਕੇ ਜ਼ਿਆਦਾ ਸੁਰੱਖਿਆ ਲਈ HTTPS ਵਰਤਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰਦਾ ਹੈ।
+    <string name="errorpage_httpsonly_message2" tools:ignore="IncorrectStraightDoubleQuote"><![CDATA[%1$s ਜਦੋਂ ਵੀ ਸੰਭਵ ਹੋ ਸਕੇ ਜ਼ਿਆਦਾ ਸੁਰੱਖਿਆ ਲਈ HTTPS ਵਰਤਣ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰਦਾ ਹੈ।
  <a href="%2$s">ਹੋਰ ਜਾਣੋ</a><br/><br/>
  ਇਸ ਸੈਟਿੰਗ ਨੂੰ ਸੈਟਿੰਗਾਂ > ਪਰਦੇਦਾਰੀ ਤੇ ਸੁਰੱਖਿਆ > ਸੁਰੱਖਿਆ ਵਿੱਚੋਂ ਬਦਲੋ।]]></string>
 
@@ -1113,4 +1118,17 @@
     <!-- This is te text of the snackbar that appears after the search widget was added successfully
     to the home screen. -->
     <string name="promote_search_widget_snackbar_message">ਵਿਜੈੱਟ ਮੁੱਖ ਸਕਰੀਨ ਉੱਤੇ ਜੋੜਿਆ ਗਿਆ</string>
+
+    <!-- Messages explaining how to exit fullscreen mode -->
+    <!-- Message shown to explain how to exit fullscreen mode when gesture navigation is enabled -->
+    <string name="exit_fullscreen_with_gesture" moz:removedIn="132" tools:ignore="UnusedResources">ਪੂਰੀ ਸਕਰੀਨ ਤੋਂ ਬਾਹਰ ਆਉਣ ਲਈ, ਉੱਤੇ ਤੋਂ ਖਿੱਚੋ ਅਤੇ ਪਿੱਛੇ ਜਾਣ ਵਾਲੇ ਸੰਕੇਤ ਨੂੰ ਵਰਤੋਂ</string>
+    <!-- Message shown to explain how to exit fullscreen mode when using back button navigation -->
+    <string name="exit_fullscreen_with_back_button" moz:removedIn="132" tools:ignore="UnusedResources">ਪੂਰੀ ਸਕਰੀਨ ਤੋਂ ਬਾਹਰ ਆਉਣ ਲਈ, ਉੱਤੇ ਤੋਂ ਖਿੱਚੋ ਅਤੇ ਪਿੱਛੇ ਨੂੰ ਦਬਾਓ</string>
+
+    <!-- Message shown to explain how to exit fullscreen mode when gesture navigation is enabled. -->
+    <!-- Localisation note: this text should be as short as possible, max 68 chars -->
+    <string name="exit_fullscreen_with_gesture_short">ਬਾਹਰ ਜਾਣ ਲਈ ਸਿਖਰ ਤੋਂ ਖਿੱਚ ਕੇ ਪਿੱਛੇ ਜਾਣ ਵਾਲੇ ਸੰਕੇਤ ਨੂੰ ਵਰਤੋਂ</string>
+    <!-- Message shown to explain how to exit fullscreen mode when using back button navigation. -->
+    <!-- Localisation note: this text should be as short as possible, max 68 chars -->
+    <string name="exit_fullscreen_with_back_button_short">ਬਾਹਰ ਜਾਣ ਲਈ ਸਿਖਰ ਤੋਂ ਖਿੱਚ ਕੇ ਪਿੱਛੇ ਨੂੰ ਦਬਾਓ</string>
 </resources>

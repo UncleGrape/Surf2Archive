@@ -60,10 +60,6 @@
     <string name="mozac_browser_errorpages_security_bad_hsts_cert_advanced">Rozšyrjony…</string>
 
     <!-- The advanced certificate information shown when a website uses HSTS. The %1$s will be replaced by the website URL and %2$s will be replaced by the app name. It's only shown when a website uses HSTS. -->
-    <string moz:removedIn="104" name="mozac_browser_errorpages_security_bad_hsts_cert_techInfo" tools:ignore="UnusedResources"><![CDATA[
-        <label> <b>%1$s</b> ma wěstotne pšawidło z mjenim HTTP Strict Transport Security (HSTS), kótarež wóznamjenijo, až <b>%2$s</b> móžo se jano wěsće zwězaś. Njamóžśo wuwześe pśidaś, aby se k toś tomu sedłoju woglědał.
-    ]]></string>
-    <!-- The advanced certificate information shown when a website uses HSTS. The %1$s will be replaced by the website URL and %2$s will be replaced by the app name. It's only shown when a website uses HSTS. -->
     <string name="mozac_browser_errorpages_security_bad_hsts_cert_techInfo2"><![CDATA[
         <label> <b>%1$s</b> ma wěstotne pšawidło z mjenim HTTP Strict Transport Security (HSTS), kótarež wóznamjenijo, až <b>%2$s</b> móžo se jano wěsće zwězaś. Njamóžśo wuwześe pśidaś, aby se k toś tomu sedłoju woglědał. </label>
     ]]></string>
@@ -116,7 +112,7 @@
     <!-- The error message shown when the browser gets stuck in an infinite loop when loading a website. -->
     <string name="mozac_browser_errorpages_redirect_loop_message"><![CDATA[<p>Wobglědowak jo pśestał, pominany objekt wótwołowaś. Sedło pósrědnja napšašowanje na nałog, kótaryž se njekóńcy.</p>
       <ul>
-        <li>Sćo cookieje znjemóžnił abo zablokěrował, kótarež su trěbne za tós to sedło?</li>
+        <li>Sćo cookieje znjemóžnił abo zablokěrował, kótarež su trjebne za tós to sedło?</li>
         <li>Jolic akceptěrowanje sedłowych cookiejow njerozwězujo ten problem, jo to nejskerjej problem serwereje konfiguracije a nic wašogo rěda.</li>
       </ul>]]></string>
 
@@ -226,7 +222,7 @@
     <string name="mozac_browser_errorpages_unknown_protocol_message"><![CDATA[
       <p>Adresa pódawa protokol (na pś. <q>wxyz://</q>), kótaryž wobglědowak njepśipóznawa, tak až wobglědowak njamóžo pšawje ze sedłom zwězaś.</p>
       <ul>
-        <li>Wopytujośo na multimedia abo druge njetekstowe słužby pśistup maś? Pśespytajśo sedło za wósebnymi pótrěbnosćami.</li>
+        <li>Wopytujośo na multimedia abo druge njetekstowe słužby pśistup maś? Pśespytajśo sedło za wósebnymi pótrjebnosćami.</li>
         <li>Někotare protokole trjebaju programy tśeśich abo tykace, nježli až wobglědowak móžo je pśipóznaś.</li>
       </ul>
     ]]></string>
