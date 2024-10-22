@@ -2,22 +2,22 @@
   "data": [
     {
       "schemaVersion": "1.12.0",
-      "slug": "android-default-toolbar-placement",
-      "id": "android-default-toolbar-placement",
+      "slug": "android-default-toolbar-placement-treatment-a-rollout",
+      "id": "android-default-toolbar-placement-treatment-a-rollout",
       "arguments": {},
       "application": "org.mozilla.firefox",
       "appName": "fenix",
       "appId": "org.mozilla.firefox",
       "channel": "release",
-      "userFacingName": "Android default toolbar placement",
+      "userFacingName": "Android default toolbar placement - Treatment A Rollout",
       "userFacingDescription": "Testing default position of toolbar.",
       "isEnrollmentPaused": false,
-      "isRollout": false,
+      "isRollout": true,
       "bucketConfig": {
         "randomizationUnit": "nimbus_id",
-        "namespace": "fenix-toolbar-release-1",
+        "namespace": "fenix-toolbar-release-mobile_first_run-rollout-1",
         "start": 0,
-        "count": 8800,
+        "count": 10000,
         "total": 10000
       },
       "featureIds": [
@@ -27,261 +27,265 @@
       "outcomes": [],
       "branches": [
         {
-          "slug": "control",
-          "ratio": 1,
-          "feature": {
-            "featureId": "toolbar",
-            "enabled": true,
-            "value": {
-              "toolbar-position-top": false
-            }
-          }
-        },
-        {
           "slug": "treatment-a",
           "ratio": 1,
           "feature": {
-            "featureId": "toolbar",
-            "enabled": true,
-            "value": {
-              "toolbar-position-top": true
+            "featureId": "this-is-included-for-mobile-pre-96-support",
+            "enabled": false,
+            "value": {}
+          },
+          "features": [
+            {
+              "featureId": "toolbar",
+              "enabled": true,
+              "value": {
+                "toolbar-position-top": true
+              }
             }
-          }
+          ]
         }
       ],
-      "targeting": "((is_already_enrolled) || ((isFirstRun == 'true') && (app_version|versionCompare('115.!') >= 0)))",
-      "startDate": "2023-06-26",
-      "enrollmentEndDate": "2023-07-12",
+      "targeting": "((is_already_enrolled) || ((isFirstRun == 'true') && (app_version|versionCompare('116.!') >= 0)))",
+      "startDate": "2023-08-09",
+      "enrollmentEndDate": null,
       "endDate": null,
-      "proposedDuration": 36,
-      "proposedEnrollment": 8,
-      "referenceBranch": "control",
+      "proposedDuration": 28,
+      "proposedEnrollment": 7,
+      "referenceBranch": "treatment-a",
       "featureValidationOptOut": false,
       "localizations": null,
-      "locales": null
+      "locales": null,
+      "publishedDate": null
     },
     {
       "schemaVersion": "1.12.0",
-      "slug": "android-re-engagement-notifications-timing-v2",
-      "id": "android-re-engagement-notifications-timing-v2",
+      "slug": "android-mobile-sync-screen-skip-copy-optimization-v2",
+      "id": "android-mobile-sync-screen-skip-copy-optimization-v2",
       "arguments": {},
       "application": "org.mozilla.firefox",
       "appName": "fenix",
       "appId": "org.mozilla.firefox",
       "channel": "release",
-      "userFacingName": "Android re-engagement notifications timing v2",
-      "userFacingDescription": "Testing timing of how we enable re-engagement notifications.",
+      "userFacingName": "Android Mobile Sync Screen Skip Copy Optimization V2",
+      "userFacingDescription": "Experiment changing the copy of the skip button on the sync onboarding tour card",
       "isEnrollmentPaused": false,
       "isRollout": false,
       "bucketConfig": {
         "randomizationUnit": "nimbus_id",
-        "namespace": "fenix-re-engagement-notification-release-3",
-        "start": 5000,
-        "count": 5000,
+        "namespace": "fenix-juno-onboarding-release-9",
+        "start": 0,
+        "count": 10000,
         "total": 10000
       },
       "featureIds": [
-        "re-engagement-notification"
+        "juno-onboarding"
+      ],
+      "probeSets": [],
+      "outcomes": [
+        {
+          "slug": "onboarding",
+          "priority": "primary"
+        }
+      ],
+      "branches": [
+        {
+          "slug": "control",
+          "ratio": 1,
+          "feature": {
+            "featureId": "this-is-included-for-mobile-pre-96-support",
+            "enabled": false,
+            "value": {}
+          },
+          "features": [
+            {
+              "featureId": "juno-onboarding",
+              "enabled": true,
+              "value": {}
+            }
+          ]
+        },
+        {
+          "slug": "treatment-a",
+          "ratio": 1,
+          "feature": {
+            "featureId": "this-is-included-for-mobile-pre-96-support",
+            "enabled": false,
+            "value": {}
+          },
+          "features": [
+            {
+              "featureId": "juno-onboarding",
+              "enabled": true,
+              "value": {
+                "cards": {
+                  "sync-sign-in": {
+                    "secondary-button-label": "I don't have a Mozilla account"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "targeting": "((is_already_enrolled) || ((isFirstRun == 'true') && (app_version|versionCompare('131.!') >= 0) && (language in ['en']) && (region in ['CA', 'GB', 'US']) && (enrollments_map['long-term-holdback-2024-h2-velocity-android'] == 'delivery')))",
+      "startDate": "2024-10-14",
+      "enrollmentEndDate": null,
+      "endDate": null,
+      "proposedDuration": 28,
+      "proposedEnrollment": 14,
+      "referenceBranch": "control",
+      "featureValidationOptOut": false,
+      "localizations": null,
+      "locales": null,
+      "publishedDate": "2024-10-14T20:58:56.540557Z"
+    },
+    {
+      "schemaVersion": "1.12.0",
+      "slug": "change-app-color-icon-android",
+      "id": "change-app-color-icon-android",
+      "arguments": {},
+      "application": "org.mozilla.firefox",
+      "appName": "fenix",
+      "appId": "org.mozilla.firefox",
+      "channel": "release",
+      "userFacingName": "Change App Color Icon - Android for New Users",
+      "userFacingDescription": "Testing a white app background to make Firefox easier to spot on your home screen.",
+      "isEnrollmentPaused": false,
+      "isRollout": false,
+      "bucketConfig": {
+        "randomizationUnit": "nimbus_id",
+        "namespace": "fenix-alternative-app-launcher-icon-release-2",
+        "start": 0,
+        "count": 10000,
+        "total": 10000
+      },
+      "featureIds": [
+        "alternative-app-launcher-icon"
       ],
       "probeSets": [],
       "outcomes": [],
       "branches": [
         {
-          "slug": "control-off-branch",
-          "ratio": 1,
-          "feature": {
-            "featureId": "re-engagement-notification",
-            "enabled": true,
-            "value": {
-              "enabled": false
-            }
-          }
-        },
-        {
-          "slug": "treatment-privacy-notification",
-          "ratio": 1,
-          "feature": {
-            "featureId": "re-engagement-notification",
-            "enabled": true,
-            "value": {
-              "enabled": true,
-              "type": 0
-            }
-          }
-        }
-      ],
-      "targeting": "((is_already_enrolled) || ((isFirstRun == 'true') && (app_version|versionCompare('115.!') >= 0)))",
-      "startDate": "2023-06-28",
-      "enrollmentEndDate": "2023-07-18",
-      "endDate": null,
-      "proposedDuration": 30,
-      "proposedEnrollment": 14,
-      "referenceBranch": "control-off-branch",
-      "featureValidationOptOut": false,
-      "localizations": null,
-      "locales": null
-    },
-    {
-      "schemaVersion": "1.12.0",
-      "slug": "lifestyles-images-onboarding-experiment-v3",
-      "id": "lifestyles-images-onboarding-experiment-v3",
-      "arguments": {},
-      "application": "org.mozilla.firefox",
-      "appName": "fenix",
-      "appId": "org.mozilla.firefox",
-      "channel": "release",
-      "userFacingName": "Lifestyles images onboarding experiment v3",
-      "userFacingDescription": "This experiment tests different sets of images for the same onboarding card messages to see if one is preferred.",
-      "isEnrollmentPaused": true,
-      "isRollout": false,
-      "bucketConfig": {
-        "randomizationUnit": "nimbus_id",
-        "namespace": "fenix-juno-onboarding-release-2",
-        "start": 0,
-        "count": 10000,
-        "total": 10000
-      },
-      "featureIds": [
-        "juno-onboarding"
-      ],
-      "probeSets": [],
-      "outcomes": [
-        {
-          "slug": "default-browser",
-          "priority": "primary"
-        }
-      ],
-      "branches": [
-        {
           "slug": "control",
           "ratio": 1,
           "feature": {
-            "featureId": "juno-onboarding",
-            "enabled": true,
-            "value": {
-              "enabled": true
+            "featureId": "this-is-included-for-mobile-pre-96-support",
+            "enabled": false,
+            "value": {}
+          },
+          "features": [
+            {
+              "featureId": "alternative-app-launcher-icon",
+              "enabled": true,
+              "value": {
+                "enabled": false,
+                "reset-to-default": false
+              }
             }
-          }
+          ]
         },
         {
           "slug": "treatment-a",
           "ratio": 1,
           "feature": {
-            "featureId": "juno-onboarding",
-            "enabled": true,
-            "value": {
+            "featureId": "this-is-included-for-mobile-pre-96-support",
+            "enabled": false,
+            "value": {}
+          },
+          "features": [
+            {
+              "featureId": "alternative-app-launcher-icon",
               "enabled": true,
-              "cards": {
-                "default-browser": {
-                  "image-res": "onboarding_default_browser",
-                  "image-is-illustration": false
-                },
-                "sync-sign-in": {
-                  "image-res": "onboarding_sync",
-                  "image-is-illustration": false
-                },
-                "notification-permission": {
-                  "image-res": "onboarding_notification",
-                  "image-is-illustration": false
-                }
+              "value": {
+                "enabled": true,
+                "reset-to-default": false
               }
             }
-          }
+          ]
         }
       ],
-      "targeting": "((is_already_enrolled) || ((isFirstRun == 'true') && (app_version|versionCompare('114.!') >= 0) && (language in ['en'])))",
-      "startDate": "2023-06-09",
-      "enrollmentEndDate": "2023-06-21",
+      "targeting": "((is_already_enrolled) || ((isFirstRun == 'true') && (app_version|versionCompare('132.!') >= 0)))",
+      "startDate": "2024-10-22",
+      "enrollmentEndDate": null,
       "endDate": null,
-      "proposedDuration": 35,
+      "proposedDuration": 49,
       "proposedEnrollment": 14,
       "referenceBranch": "control",
       "featureValidationOptOut": false,
       "localizations": null,
-      "locales": null
+      "locales": null,
+      "publishedDate": "2024-10-22T18:43:28.679357Z"
     },
     {
       "schemaVersion": "1.12.0",
-      "slug": "on-boarding-challenge-the-default",
-      "id": "on-boarding-challenge-the-default",
+      "slug": "long-term-holdback-2024-h2-velocity-android",
+      "id": "long-term-holdback-2024-h2-velocity-android",
       "arguments": {},
       "application": "org.mozilla.firefox",
       "appName": "fenix",
       "appId": "org.mozilla.firefox",
       "channel": "release",
-      "userFacingName": "On-boarding Challenge the Default",
-      "userFacingDescription": "Testing copy and images in the first run onboarding that is consistent with marketing messaging.",
+      "userFacingName": "Long term holdback 2024 H2 Velocity Android",
+      "userFacingDescription": "Long-term holdback for H2 Velocity experiments",
       "isEnrollmentPaused": false,
       "isRollout": false,
       "bucketConfig": {
         "randomizationUnit": "nimbus_id",
-        "namespace": "fenix-juno-onboarding-release-3",
+        "namespace": "fenix-no-feature-fenix-release-3",
         "start": 0,
         "count": 10000,
         "total": 10000
       },
       "featureIds": [
-        "juno-onboarding"
+        "no-feature-fenix"
       ],
       "probeSets": [],
-      "outcomes": [
-        {
-          "slug": "default-browser",
-          "priority": "primary"
-        }
-      ],
+      "outcomes": [],
       "branches": [
         {
-          "slug": "control",
-          "ratio": 1,
+          "slug": "delivery",
+          "ratio": 19,
           "feature": {
-            "featureId": "juno-onboarding",
-            "enabled": true,
-            "value": {
-              "enabled": true
+            "featureId": "this-is-included-for-mobile-pre-96-support",
+            "enabled": false,
+            "value": {}
+          },
+          "features": [
+            {
+              "featureId": "no-feature-fenix",
+              "enabled": true,
+              "value": {}
             }
-          }
+          ]
         },
         {
-          "slug": "treatment-a",
+          "slug": "holdback",
           "ratio": 1,
           "feature": {
-            "featureId": "juno-onboarding",
-            "enabled": true,
-            "value": {
+            "featureId": "this-is-included-for-mobile-pre-96-support",
+            "enabled": false,
+            "value": {}
+          },
+          "features": [
+            {
+              "featureId": "no-feature-fenix",
               "enabled": true,
-              "cards": {
-                "default-browser": {
-                  "title": "Du entscheidest, was Standard ist",
-                  "body": "Nimm nicht das Erstbeste, sondern das Beste für dich: Firefox schützt deine Privatsphäre.\n\nLies unseren Datenschutzhinweis.",
-                  "link-text": "Datenschutzhinweis",
-                  "image-res": "onboarding_ctd_default_browser"
-                },
-                "sync-sign-in": {
-                  "title": "Alles ist dort, wo du es brauchst",
-                  "body": "Wenn du willst, bringt Firefox deine Tabs und Passwörter auf all deine Geräte.",
-                  "image-res": "onboarding_ctd_sync"
-                },
-                "notification-permission": {
-                  "title": "Du bestimmst, was Firefox kann",
-                  "body": "Benachrichtigungen helfen dabei, Downloads zu managen und Tabs zwischen Geräten zu senden.",
-                  "image-res": "onboarding_ctd_notification"
-                }
-              }
+              "value": {}
             }
-          }
+          ]
         }
       ],
-      "targeting": "((is_already_enrolled) || ((isFirstRun == 'true') && (app_version|versionCompare('115.!') >= 0) && (language in ['de']) && (region in ['DE'])))",
-      "startDate": "2023-06-21",
-      "enrollmentEndDate": "2023-07-18",
+      "targeting": "((is_already_enrolled) || ((app_version|versionCompare('123.!') >= 0)))",
+      "startDate": "2024-09-19",
+      "enrollmentEndDate": null,
       "endDate": null,
-      "proposedDuration": 30,
-      "proposedEnrollment": 14,
-      "referenceBranch": "control",
+      "proposedDuration": 100,
+      "proposedEnrollment": 100,
+      "referenceBranch": "holdback",
       "featureValidationOptOut": false,
       "localizations": null,
-      "locales": null
+      "locales": null,
+      "publishedDate": "2024-09-19T17:57:21.676623Z"
     }
   ]
 }
