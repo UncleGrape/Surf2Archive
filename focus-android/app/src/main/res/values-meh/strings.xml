@@ -54,7 +54,6 @@
     <string name="menu_remove_from_shortcuts">Xita da acceso ñama</string>
 
     <!-- Menu item: Shows information about features and changes that are new to this version -->
-    <string name="menu_whats_new">Nakuvi a jíía íyo</string>
     <string name="menu_settings">Ke´i</string>
     <string name="menu_about">Jiee ya´a</string>
     <string name="menu_help">Chinei</string>
@@ -85,10 +84,13 @@
          sharing an URL. -->
     <string name="share_dialog_title">Kua´a jii</string>
 
-    <!-- While a browsing session is active (in the foreground or background) we will show a notification
-         so that the user doesn't forget about the website still being open. This text is shown in
-         the notification. Clicking the notification will have the same effect as clicking the "erase"
-         button in the application. -->
+    <string name="notification_erase_title_android_14">Xiná daa nnánukunu?</string>
+    <string name="notification_erase_text_android_14" moz:RemovedIn="124" tools:ignore="UnusedResources">Kuaxin a xíín xina notificación sa naa a nnánukunu.</string>
+
+    <!-- Text shown in the notification description that pops up to remind the user that a browsing session is active
+    for Android 14+. -->
+    <string name="notification_erase_text_android_14_1">Kuaxin a xíín xina notificación sa naa a nnánukunu.</string>
+
     <string name="notification_erase_text">Xiná daa nnánukunu</string>
 
     <!-- Notification action to open Focus and resume the current browsing session. -->
@@ -310,6 +312,12 @@
     <!-- Preference Title: Biometrics can be used to unlock Focus if the previous session's data was not erased by the user. -->
     <string name="preference_security_biometric">Ni´in ka̱a̱ na´a tɨɨ saa kuvi síne ka̱a̱ ya´a</string>
 
+    <!-- Preference Summary: Biometrics (iris scan, fingerprint, or facial scan) can be used to unlock Focus if the app had a URL
+        open when the app was last run to ensure that only the phone's owner can view a previous session.
+        %s will be replaced by the app name (e.g. Firefox Focus)
+        Shortcuts is a feature that allows the user to pin his favorite websites to Focus home screen so he can quickly access them-->
+    <string name="preference_security_biometric_summary2">Síne jíí na\'a tiin noo\'o de nchisonu accesos directos a xíín sa íyo nune iin sitio jíí %s.</string>
+
     <!-- Preference Title: Secure Mode is a setting that prevents the app's content to show up in the "recent apps" screen
          and prevents the user from taking screenshots or casting the app to other displays. -->
     <string name="preference_privacy_secure_mode">Ntu tuvi</string>
@@ -486,7 +494,10 @@
 
 
 
-  <string name="error_hostLookup_title">Ntu nani´í ka̱a̱ servidor</string>
+  <!-- Snackbar that will be displayed after a website has been added to shortcuts. -->
+    <string name="snackbar_added_to_shortcuts">Tee nuu acceso ñama!</string>
+
+    <string name="error_hostLookup_title">Ntu nani´í ka̱a̱ servidor</string>
 
 
 
@@ -612,6 +623,22 @@
     %2$s will be replaced with a URL linking to the MPL (e.g. https://www.mozilla.org/en-US/MPL/) -->
     <string name="your_rights_content2"><![CDATA[%1$s kuvi ni´inuma jiee <a href="%2$s"> tutu xitu Mozilla </a> jíí da inka tutu código nune.]]></string>
 
+    <!-- Text shown in the "Your rights" screen.
+    %1$s will be replaced with the name of the app (e.g. Firefox Focus)
+    %2$s will be replaced with a URL linking to the trademark policy (e.g. https://www.mozilla.org/foundation/trademarks/policy/) -->
+    <string name="your_rights_content3"><![CDATA[Ntu taji tutu xitu a xíín daa inka tutu xitu Mozilla a xíín inka vetiñu nuu noo\'o, vani kuviji logos a xiin sivɨ Mozilla, Firefox a xiin %1$s. Kuvi nani\'inu kue\'eka jiee  <a href="%2$s">ya\'a</a>.]]></string>
+
+    <!-- Text shown in the "Your rights" screen.
+    %1$s will be replaced with the name of the app (e.g. Firefox Focus)
+    %2$s will be replaced with a URL linking to the list of licenses used by the dependencies.-->
+    <string name="your_rights_content4"><![CDATA[Código da fuente adicional %1$s íyo jíí <a href="%2$s"> licencias </a> nune jee kuvi sama código.]]></string>
+
+    <!-- Text shown in the "Your rights" screen.
+    %1$s will be replaced with the name of the app (e.g. Firefox Focus)
+    %2$s will be replaced with a URL linking to the GPL
+    %3$s will be replaced with a URL linking to the tracking protection wiki page (e.g. https://wiki.mozilla.org/Security/Tracking_protection#Lists) -->
+    <string name="your_rights_content5"><![CDATA[%1$s ni´i lista ntɨ tuvi a taji Disconnect, Inc. jiee <a href="%2$s"> tutu xitu ntaka GNU v3 </a> jee kuvi nani´inuma <a href="%3$s"> ya´a </a>.]]></string>
+
     <!-- Text shown in prompts for GeckoView -->
     <string name="gv_prompt_username_hint">Sivɨ</string>
     <string name="gv_prompt_password_hint">Contraseña</string>
@@ -713,8 +740,14 @@
     <!-- Title text for a detail explanation indicating cookie banner handling is off this site, this is shown as part of the cookie banner panel in the toolbar. The first parameter is a shortened URL of the current site. -->
     <string name="cookie_banner_exception_panel_title_state_off_for_site">¿A kuvi sa´a reducción banner da cookies nu %1$s?</string>
 
+    <!-- Long text for a detail explanation indicating what will happen if cookie banner handling is on for a site, this is shown as part of the cookie banner panel in the toolbar. The placeholder will be updated with the app name. -->
+    <string name="cookie_banner_exception_panel_description_state_on_for_site">%1$s Naa daa cookies sitio ya\'a jee nakajie\'e tuku tutu. Dee naa kuaiyo daa cookies kuvi nakasɨ sesión noo\'o a xíín naa daa ka̱a̱ nuu ke\'en.</string>
+
     <!-- Long text for a detail explanation indicating what will happen if cookie banner handling is off for a site, this is shown as part of the cookie banner panel in the toolbar. The placeholder will be updated with the app name. -->
     <string name="cookie_banner_exception_panel_description_state_off_for_site2">%1$s kuvi sá´á njia´a da solicitudes jikan cookies.</string>
+
+    <!-- Long text for a detail explanation indicating that cookie banner reduction is not supported for the current site, this is shown as part of the cookie banner panel in the toolbar. -->
+    <string name="cookie_banner_exception_panel_description_site_is_not_supported">Ntañu\'un, nuu ya\'a ntu satiñu va\'a jíí reducción banner jíí cookies. ¿A kuvinu kakanu nuu daa nuu\'u kune\'yadani nuu web ya\'a saa kuvi satiñu va\'a íchi nuu?</string>
 
     <!-- Text for cancel button indicating that cookie banner reduction is not supported for the current site, this is shown as part of the cookie banner panel in the toolbar. -->
     <string name="cookie_banner_exception_panel_site_is_not_supported_cancel_button">Nkuvi</string>
@@ -728,6 +761,10 @@
     <!-- Label for cookie banner item from tracking protection, after the user reports with success a website where cookie banner reducer did not work -->
     <string name="cookie_banner_the_site_was_reported">Tutu a chineida noo´o nchu´un ichi</string>
 
+    <!-- Contextual Feature Recommendation Popups -->
+    <!-- CFR for Cookie Banner (Banner Info Message). %1$s will be replaced by the app name, %2$s will be an active link using the string cfr_cookie_banner_link as text. -->
+    <string name="cfr_cookie_banner">%1$s Nkua\'anu jia\'a daa solicitudes cookies saa naa daa banners cokies.\n
+\n Ke\'i daa preferencias banners cookies nu %2$s.</string>
     <!-- CFR for Cookie Banner (Banner Info Message). This string is used as text for a link in cfr_cookie_banner and takes the user to the app settings. -->
     <string name="cfr_cookie_banner_link">Da nu ke´i</string>
 
@@ -839,6 +876,10 @@
     <!-- Title for the prompt to enable search suggestions -->
     <string name="enable_search_suggestion_title2">¿Xituvi da sugerencias a nnánuku?</string>
 
+    <!-- Description for the prompt to enable search suggestions
+        %1$s will be replaced by the app name (e.g. Firefox Focus) -->
+    <string name="enable_search_suggestion_description">Saa kuvi ni´inu tu´un chineí nánuku, %1$s nejika chu´un ichinu daa a teenu nu chu´un direcciones jii ka̱a̱ nánuku.</string>
+
     <!-- Label used for the "NO button" for the prompt to enable search suggestions -->
     <string name="enable_search_suggestions_no">Ntuvi</string>
 
@@ -846,7 +887,7 @@
     <string name="enable_search_suggestions_yes">Kuvi</string>
 
     <!-- Message displayed when using a search engine that doesn't provide suggestions -->
-    <string name="no_suggestions_message">Iyo daa ka̱a̱ nánuku ntu xituvi tu\'un chineí nánukunu.</string>
+    <string name="no_suggestions_message">Daa ka̱a̱ nánuku ntu nkuvi xituvi daa tu\'un chineí nánukunu.</string>
 
     <!-- Button to dismiss the message displayed  when using a search engine that doesn't provide suggestions-->
     <string name="dismiss_no_suggestions_prompt_button">Xita</string>
@@ -884,7 +925,7 @@
     <string name="open_new_tab_snackbar">Sama</string>
 
     <!-- Text displayed in a notification when the user enters full screen mode -->
-    <string name="full_screen_notification">Kivunɨ nu pantalla ka´nu</string>
+    <string name="full_screen_notification" moz:removedIn="130" tools:ignore="UnusedResources">Kivunɨ nu pantalla ka´nu</string>
 
     <!-- Preference for switching to a new tab immediately after opening -->
     <string name="preference_open_new_tab">Sama kuvi chunta´a pestaña jíía ñama</string>
@@ -896,6 +937,9 @@
 
     <!-- Title of the preference to enable "HTTPS-Only" mode -->
     <string name="preference_https_only_title">Ntu xini HTTPS</string>
+
+    <!-- Description of the preference to enable "HTTPS-Only" mode. -->
+    <string name="preference_https_only_summary3">Nakivɨ tuku nuu daa sitio jee ni\'i protocolo encriptación HTTPS saa koo kue\'eka a kumiji noo\'o saa jikanu nuu ka̱a̱ ya\'a.</string>
 
     <!-- Preference for exceptions tracking protection -->
     <string name="preference_exceptions">Exceptions</string>
@@ -987,8 +1031,27 @@
      <!-- The title of the error page for websites that do not support HTTPS when HTTPS-Only is turned on  -->
     <string name="errorpage_httpsonly_title2">Ntu satiñu vatu jii HTTPS</string>
 
+    <!-- The text of the error page for websites that do not support HTTPS when HTTPS-Only is turned on. %1$s will get replaced with the name of the app (e.g. "Firefox Focus").
+        Contains a button that will redirect the user to Privacy & Security Screen-->
+    <string name="errorpage_httpsonly_message2"><![CDATA[%1$s Ni\'i iin conexión HTTPS ntaka kuvinu koo kue\'e a kumiji noo\'o
+     <a href="%2$s">Kuni kue\'eka jiee</a> <br/><br/>
+     Sama configuración nuu ajustes > Privacidad &amp; Seguridad > Seguridad.]]></string>
+
     <!-- The document title and heading of the error page shown when a website has an invalid or expired SSL certificate. -->
     <string name="mozac_browser_errorpages_security_bad_cert_title">Conexión ntu va´a</string>
+
+     <!-- The error message shown when a website has an invalid or expired SSL certificate. -->
+    <string name="mozac_browser_errorpages_security_bad_cert_message"><![CDATA[
+ Sa̱na kuvi iin problema jii configuración ka̱a̱ servidor a xíín íyo neva kuvi sa´a xeen.<br/><br/>
+ Dee a kivɨ-nu servidor ya´a íchi yata sa̱naan kuvi iin error nkene ntañu\'u, kuvi nakivɨ-nu íchika dee nníní.
+ ]]></string>
+
+    <!-- The advanced certificate information shown when a website has an invalid SSL certificate. The %1$s will be replaced by the app name and %2$s will be replaced by website URL. It's only shown when a website has an invalid SSL certificate. -->
+    <string name="mozac_browser_errorpages_security_bad_cert_techInfo"><![CDATA[
+ <label>Sana íyo ñivɨ kuvi kantu\'un noo\'o nuu sitio ya\'a de jia\'nu kuvi koo tixi.</label>
+ <br><br>
+ <label>%1$s no confía en <b>%2$s</b> porque el emisor del certificado es desconocido, el certificado está autofirmado o el servidor no envía los certificados intermedios correctos.</label>
+ ]]></string>
 
      <!-- Sessions List -->
     <!-- Content description (not visible, for screen readers etc.): Button that closes a tab n the sessions list -->
@@ -1004,6 +1067,8 @@
     <!-- Tool Tip for: Privacy and Security Settings Screen  task : https://github.com/mozilla-mobile/focus-android/issues/6211 -->
     <!-- Tool Tip Title -->
     <string name="tool_tip_title">¡Kumidani noo´o!</string>
+    <!-- Tool Tip Message -->
+    <string name="tool_tip_message">Configuración predeterminada jia\'a iin a kumi. Ntu viji kuvi kei\'o saa kuvi koo kua kuvinu ni\'inuma</string>
     <!-- Tool Tip "X" button Content description (not visible, for screen readers etc.) :Button that closes the tool tip -->
     <string name="tool_tip_dismiss_button_content_description">Xita</string>
 
@@ -1023,6 +1088,13 @@
     <!-- This is the title of promote search widget dialog. -->
     <string name="promote_search_widget_dialog_title">¡Nná da a nnánukunu! 🎉</string>
 
+    <!-- Banner Info Message than will appear when user first enters in the app. The location is at the toolbar. -->
+    <string name="cfr_for_start_browsing">Kajie´e sesión yi yu\'u jee nakasɨdani rastreadores jíí inka amenazas ntaka jikanu nuu ka̱a̱ ya\'a.</string>
+
+    <!-- This is the subtitle of promote search widget dialog. %1$s will get replaced with the name
+    of the app (e.g. "Focus") -->
+    <string name="promote_search_widget_dialog_subtitle">Xinodani jíí navegación yu\'u, je kajie\'e ñama inka íchi jíí widget %1$s nuu pantalla xinañu\'u.</string>
+
     <!-- This is te text from add search widget to home screen button .The button is located on
     promote search widget dialog. -->
     <string name="promote_search_widget_button_text">Chisó ya´a nuu kajie´e xinañu´un</string>
@@ -1030,4 +1102,10 @@
     <!-- This is te text of the snackbar that appears after the search widget was added successfully
     to the home screen. -->
     <string name="promote_search_widget_snackbar_message">Widget nte nu pantalla xinañu´u</string>
+
+    <!-- Messages explaining how to exit fullscreen mode -->
+    <!-- Message shown to explain how to exit fullscreen mode when gesture navigation is enabled -->
+    <string name="exit_fullscreen_with_gesture">Saa kuvi kenenu pantalla ka\'nu, staka nee íchi sikɨ jee kuaxín tecla xinoo</string>
+    <!-- Message shown to explain how to exit fullscreen mode when using back button navigation -->
+    <string name="exit_fullscreen_with_back_button">Saa kuvi kenenu pantalla ka\'nu, staka nee íchi sikɨ jee kuaxín tecla xinoo</string>
 </resources>

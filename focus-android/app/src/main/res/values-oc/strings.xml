@@ -53,7 +53,6 @@
     <string name="menu_remove_from_shortcuts">Suprimir dels acorchis</string>
 
     <!-- Menu item: Shows information about features and changes that are new to this version -->
-    <string name="menu_whats_new">Novetats</string>
     <string name="menu_settings">Paramètres</string>
     <string name="menu_about">A prepaus</string>
     <string name="menu_help">Ajuda</string>
@@ -84,10 +83,13 @@
          sharing an URL. -->
     <string name="share_dialog_title">Partejar via</string>
 
-    <!-- While a browsing session is active (in the foreground or background) we will show a notification
-         so that the user doesn't forget about the website still being open. This text is shown in
-         the notification. Clicking the notification will have the same effect as clicking the "erase"
-         button in the application. -->
+    <string name="notification_erase_title_android_14">Escafar l’istoric de navegacion ?</string>
+    <string name="notification_erase_text_android_14" moz:RemovedIn="124" tools:ignore="UnusedResources">Tocatz aquesta notificacion o suprimissètz-la per escafar l’istoric de navegacion d’una manièra segura.</string>
+
+    <!-- Text shown in the notification description that pops up to remind the user that a browsing session is active
+    for Android 14+. -->
+    <string name="notification_erase_text_android_14_1">Tocatz o lisatz aquesta notificacion per escafar l’istoric de navegacion d’una manièra segura.</string>
+
     <string name="notification_erase_text">Netejar l’istoric de navegacion</string>
 
     <!-- Notification action to open Focus and resume the current browsing session. -->
@@ -921,7 +923,7 @@
     <string name="open_new_tab_snackbar">Mostrar</string>
 
     <!-- Text displayed in a notification when the user enters full screen mode -->
-    <string name="full_screen_notification">Mòde plen ecran actiu</string>
+    <string name="full_screen_notification" moz:removedIn="130" tools:ignore="UnusedResources">Mòde plen ecran actiu</string>
 
     <!-- Preference for switching to a new tab immediately after opening -->
     <string name="preference_open_new_tab">Mostrar sulcòp los ligams dobèrts</string>
@@ -1109,4 +1111,10 @@
     <!-- This is te text of the snackbar that appears after the search widget was added successfully
     to the home screen. -->
     <string name="promote_search_widget_snackbar_message">Widget apondut a l’ecran d’acuèlh</string>
+
+    <!-- Messages explaining how to exit fullscreen mode -->
+    <!-- Message shown to explain how to exit fullscreen mode when gesture navigation is enabled -->
+    <string name="exit_fullscreen_with_gesture">Per sortir del mòde ecran complèt, lisatz d’ennaut e utilizatz lo gèst de retorn</string>
+    <!-- Message shown to explain how to exit fullscreen mode when using back button navigation -->
+    <string name="exit_fullscreen_with_back_button">Per sortir del mòde ecran complèt, lisatz d’ennaut e utilizatz quichatz retorn</string>
 </resources>
